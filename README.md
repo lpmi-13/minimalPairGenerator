@@ -75,6 +75,7 @@ below this line is where the pipeline is decoupled from the data source
 
 ## external dependencies
 beyond python, the current pipeline relies on two external programs:
+
 -ffmpeg (add installation instructions)
 
 -waudsprite (add installation instructions with preference for nvm)
