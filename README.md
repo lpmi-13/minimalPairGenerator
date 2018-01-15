@@ -37,7 +37,7 @@ below this line is where the pipeline is decoupled from the data source
 
 `convert_to_mp3.py`
 
-2. more cleaning of transcripts (this plus previous two should be combined into one step) and remove parentheses
+2. more cleaning of transcripts and removing parentheses
 
 `clean_transcripts.sh`
 
@@ -61,7 +61,7 @@ below this line is where the pipeline is decoupled from the data source
 
 `force-align.py`
 
-7. grab each word as a separate audio file
+7. use force-alignment data to grab each word as a separate audio file from the original full audio
 (this also attempts to slow down all audio files by 50%)
 
 `create_audio_files.py`
