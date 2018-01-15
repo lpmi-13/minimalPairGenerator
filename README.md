@@ -6,18 +6,19 @@ this takes in an audio transcript and the audio and outputs audio files of the m
 eventual dir structure:
 ```
   base
-    |__original_audio
     |__converted_audio
-    |__transcripts
-    |__json
-    |__pairs
+    |__converted_transcripts
     |__data
-        |__subdirs(based off of minimal pair distinctions, eg a-e)
-            |__bat-bet
-                 |__audio files for bat-bet across videos
-            |__sat-set
-                 |__audio files for sat-set across videos
-            |__etc...
+    |   |__subdirs(based off of minimal pair distinctions, eg a-e)
+    |       |__bat-bet
+    |            |__audio files for bat-bet across videos
+    |       |__sat-set
+    |            |__audio files for sat-set across videos
+    |       |__etc...
+    |__json
+    |__original_audio
+    |__original_transcripts
+    |__pairs
 ```
 
 example steps not included in this particular repo:
