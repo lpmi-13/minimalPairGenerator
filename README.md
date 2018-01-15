@@ -15,10 +15,10 @@ eventual dir structure:
     |       |__sat-set
     |            |__audio files for sat-set across videos
     |       |__etc...
-    |__json
+    |__force_aligned_json
+    |__minimal_pairs
     |__original_audio
     |__original_transcripts
-    |__pairs
 ```
 
 example steps not included in this particular repo:
@@ -70,3 +70,11 @@ below this line is where the pipeline is decoupled from the data source
 (this is what will be sent to the front end to describe the location of each of the compiled audio files)
 
 `generate_assets.py`
+
+------------------------------------------------------------------
+
+## external dependencies
+beyond python, the current pipeline relies on two external programs:
+-ffmpeg (add installation instructions)
+
+-waudsprite (add installation instructions with preference for nvm)
