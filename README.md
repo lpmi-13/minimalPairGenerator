@@ -31,33 +31,33 @@ example steps not included in this particular repo:
 --------------------------------------------------------------
 below this line is where the pipeline is decoupled from the data source
 
-- convert the webm files to mp3
+1. convert the webm files to mp3
 (useful if the source files are from youtube)
-  convert_to_mp3.py
+convert_to_mp3.py
 
-- more cleaning of transcripts (this plus previous two should be combined into one step) and remove parentheses
-  clean_transcripts.sh
+2. more cleaning of transcripts (this plus previous two should be combined into one step) and remove parentheses
+clean_transcripts.sh
 
-- convert transcripts to just single lines (easier to parse) and filter for bad words
-  convert_transcripts_to_single_lines.py
+3. convert transcripts to just single lines (easier to parse) and filter for bad words
+convert_transcripts_to_single_lines.py
 
-- generate list of minimal pairs per transcript
+4. generate list of minimal pairs per transcript
 (this step is where meta-data about which phonemes differ can be generated...and then used as folder names. In each of these folders, the eventual minimal pair audio files will be labelled with the video name, so that they remain distinct even with multiple minimal pair audio files in a folder)
-  get_pairs.py
+get_pairs.py
 
 
-- spin up a docker container with the "gentle" force-alignment server
+5. spin up a docker container with the "gentle" force-alignment server
 create_fa_container.sh
 
 
-- get force-aligned json file
+6. get force-aligned json file
 (this is the step that takes the most time)
-  force-align.sh
+force-align.sh
 
-- grab each word as a separate audio file
+7. grab each word as a separate audio file
 (this also attempts to slow down all audio files by 50%)
-  create_audio_files.py
+create_audio_files.py
 
-- generate json file reflecting directory structure as well as audio sprites
+8. generate json file reflecting directory structure as well as audio sprites
 (this is what will be sent to the front end to describe the location of each of the compiled audio files)
-  generate_assets.py_
+generate_assets.py_
