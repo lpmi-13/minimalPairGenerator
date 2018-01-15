@@ -59,7 +59,7 @@ below this line is where the pipeline is decoupled from the data source
 6. get force-aligned json file
 (this is the step that takes the most time)
 
-`force-align.sh`
+`force-align.py`
 
 7. grab each word as a separate audio file
 (this also attempts to slow down all audio files by 50%)
