@@ -12,7 +12,7 @@ eventual dir structure:
     |__json
     |__pairs
     |__data
-        |__subdirs(based off transcript file names...though eventually based off of minimal pair distinctions, eg a-e)
+        |__subdirs(based off of minimal pair distinctions, eg a-e)
             |__bat-bet
                  |__audio files for bat-bet across videos
             |__sat-set
