@@ -7,8 +7,8 @@ import json
 from itertools import combinations
 from collections import defaultdict
 
-CONVERTED_TRANSCRIPT_DIR = './converted_transcripts'
-PAIRS_DIR = './pairs'
+CONVERTED_TRANSCRIPT_DIR = './converted_transcripts/'
+PAIRS_DIR = './minimal_pairs/'
 
 epi = epitran.Epitran('eng-Latn')
 
