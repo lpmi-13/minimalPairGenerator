@@ -50,7 +50,7 @@ below this line is where the pipeline is decoupled from the data source
 `get_pairs.py`
 
 
-5. spin up a docker container with the "gentle" force-alignment server
+5. spin up a docker container with the "gentle" force-alignment server (TODO)
 
 `create_fa_container.sh`
 
