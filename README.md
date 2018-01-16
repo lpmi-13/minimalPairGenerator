@@ -39,7 +39,7 @@ below this line is where the pipeline is decoupled from the data source
 
 2. more cleaning of transcripts and removing parentheses
 
-`clean_transcripts.sh`
+`clean_transcripts.py`
 
 3. convert transcripts to just single lines (easier to parse) and filter for bad words
 
