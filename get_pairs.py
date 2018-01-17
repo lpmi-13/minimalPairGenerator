@@ -2,13 +2,15 @@ import distance
 import epitran
 import re
 import os
-import yaml
 import json
 from itertools import combinations
 from collections import defaultdict
 
 CONVERTED_TRANSCRIPT_DIR = './converted_transcripts/'
 PAIRS_DIR = './minimal_pairs/'
+
+if not os.path.exists(PAIRS_DIR):
+    os.mkdir(PAIRS_DIR)
 
 epi = epitran.Epitran('eng-Latn')
 

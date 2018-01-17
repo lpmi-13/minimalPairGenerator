@@ -35,7 +35,7 @@ below this line is where the pipeline is decoupled from the data source
 1. clean up file names (replace everything with underscores, etc)
 (TODO...this makes all the other file manipulation easier later)
 
-`clean_file_names.py`
+`clean_filenames.py`
 
 2. convert the webm files to mp3
 (useful if the source files are from youtube)

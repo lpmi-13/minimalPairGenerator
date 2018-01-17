@@ -1,23 +1,24 @@
 import os
 import subprocess
+import sys
 
-AUDIO_DIR = './converted_audio/'
-TRANSCRIPT_DIR = './converted_transcripts/'
-FORCE_ALIGNMENT_JSON_DIR = './force_aligned_json/'
+DOCKER_PORT = sys.argv[1]
 
-'''
-research the way to get the process ID of the locally running docker container with the gentle force-alignment service running
-'''
+CONVERTED_AUDIO_DIR = 'converted_audio/'
+CONVERTED_TRANSCRIPT_DIR = 'converted_transcripts/'
+FORCE_ALIGNMENT_JSON_DIR = 'force_aligned_json/'
 
 if not os.path.exists(FORCE_ALIGNMENT_JSON_DIR):
-    os.mkdir(FORCE_ALIGNMENTS_JSON_DIR)
+    os.mkdir(FORCE_ALIGNMENT_JSON_DIR)
 
 '''
 I assume this subprocess command will complete synchronously
 given that the query param explicitly specifies async=false...
 but haven't actually tried it yet via python subprocess
 '''
-for audio_file in os.listdir(AUDIO_DIR):
+for audio_file in os.listdir(CONVERTED_AUDIO_DIR):
     filename, file_extension = os.path.splitext(audio_file)
 
-    curl_command = ['curl', '-F', '"audio=@' + AUDIO_DIR + '/' + audio_file + '"', '-F', '"transcript=@' + TRANSCRIPT_DIR + filename + '.txt"', '"http://localhost:' + docker_ps_id + '/transcriptions?async=false"', '-v', '>', '"' + FORCE_ALIGNEMENT_JSON_DIR + filename + '.json"'] 
+    curl_command = ['curl', '-F', 'audio=@' + os.path.join(CONVERTED_AUDIO_DIR, audio_file), '-F', 'transcript=@' + CONVERTED_TRANSCRIPT_DIR + filename + '.txt', 'http://localhost:' + DOCKER_PORT + '/transcriptions?async=false', '-v', '>', FORCE_ALIGNMENT_JSON_DIR + filename + '.json']
+
+    subprocess.call(curl_command)
