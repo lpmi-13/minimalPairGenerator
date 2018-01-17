@@ -27,17 +27,13 @@ examples:
 
 The only current applications (that I'm aware of) rely on actual humans to record themselves saying these minimal pairs and submitting them to the system. This has obvious disadvantages in terms of scalability, since even the kind souls dedicated enough to submit their own voice recordings probably don't have a very large amount of time to devote to the task.
 
-Fortunately, automatic speech recognition (while still not great), is good enough for us to use in force alignment, which outputs the time-stamp location of every word in an audio stream (It can actually output time stamps for every phoneme, but we don't need that level of detail here).
+Fortunately, automatic speech recognition (while still not great) is good enough for us to use in force alignment, which outputs the time-stamp location of every word in an audio stream (It can actually output time stamps for every phoneme, but we don't need that level of detail here).
 
 Based on the list of minimal pairs present in the video (which we calculate from the transcript), we can then use the force alignment time-stamps to pull out just the audio that has each half of each minimal pair and save those to separate audio files.
 
 At the end of the process, we concatenate all the audio for all the speakers for one particular minimal pair, and with enough input data (I'm aiming for 800 audio/transcript pairs), we should have a fair amount of variation in speakers/accents for a large number of minimal pairs.
 
-
-## to run
-`bash generate.sh`
-
-eventual dir structure:
+eventual directory structure:
 ```
   base
     |__converted_audio
@@ -54,6 +50,10 @@ eventual dir structure:
     |__original_audio
     |__original_transcripts
 ```
+
+## to run
+`bash generate.sh`
+
 
 example steps not included in this particular repo:
 
