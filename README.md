@@ -9,12 +9,15 @@ TL;DR - two words with only one meaningful sound difference (these differences c
 examples:
 
 - peach / pitch
+
   pit͡ʃ  / pɪt͡ʃ
 
 - breath / bread
+
   bɹɛθ / bɹɛd
 
 - peer / fear
+
   pɪɹ  / fɪɹ
 
 ...for a bit less of an overview, [this paper](https://journals.equinoxpub.com/index.php/CALICO/article/viewFile/22985/18991) outlines why practicing minimal pairs can be beneficial in the context of second language acquisition, and specifically describes a method involving learners listening to minimal pairs spoken by multiple different speakers.
