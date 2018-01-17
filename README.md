@@ -51,8 +51,9 @@ below this line is where the pipeline is decoupled from the data source. This is
 
 ***
 THESE FIRST THREE STEPS ARE EXPECTING TO FIND
-original_audio/
-original_transcripts/
+`original_audio/`
+AND
+`original_transcripts/`
 AS DIRECTORIES.
 
 ...I will eventually refactor stuff to make it accept command linearguments for whatever input folder you want, but just focused on getting it all working at the moment
