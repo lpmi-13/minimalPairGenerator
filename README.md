@@ -56,7 +56,7 @@ AND
 `original_transcripts/`
 AS DIRECTORIES.
 
-...I will eventually refactor stuff to make it accept command linearguments for whatever input folder you want, but just focused on getting it all working at the moment
+...I will eventually refactor stuff to make it accept command line arguments for whatever input folder you want, but just focused on getting it all working at the moment
 ***
 
 4. generate list of minimal pairs per transcript
