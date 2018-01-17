@@ -17,10 +17,10 @@ for filename in json_files:
     short_name = filename[:char_index]
 
     # this is the minimal pairs data
-    with open(PAIRS_DIRECTORY + filename, 'r') as f:
+    with open(os.path.join(PAIRS_DIRECTORY, filename), 'r') as f:
         data = json.load(f)
 
-    with open(FORCE_ALIGNED_DIRECTORY + short_name + '.json', 'r') as w:
+    with open(os.path.join(FORCE_ALIGNED_DIRECTORY, short_name + '.json'), 'r') as w:
         # loads the force-alignment results per video
         fa_data = json.load(w)
         fa_words = fa_data['words']
@@ -31,7 +31,7 @@ for filename in json_files:
 
         '''
         this is where we will make a subdirectory under /data/
-        named for the first phoneme pair in the json file for this
+        named for each phoneme pair in the json file for this
         video
         '''
         if not os.path.exists(subdir):

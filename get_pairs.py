@@ -56,6 +56,7 @@ for filename in converted_transcript_files:
  
     minimalPairArray = []
  
+    # this part compares every word to every other word
     for firstWord, secondWord in combinations(wordPhoneDict, 2):
 
         '''
@@ -69,7 +70,11 @@ for filename in converted_transcript_files:
 
         if get_diff(firstIPA, secondIPA) == 1:
 
-            #gets the actual two phonemes that differ
+            '''
+            this gets the actual two phonemes that differ and
+            returns the character index in the IPA representations
+            where this occurs
+            '''
             char_index = get_different_phoneme(firstIPA, secondIPA)
             encoding_pair = firstIPA[char_index] + '-' + secondIPA[char_index]
             # use this to generate folder names

@@ -19,6 +19,6 @@ but haven't actually tried it yet via python subprocess
 for audio_file in os.listdir(CONVERTED_AUDIO_DIR):
     filename, file_extension = os.path.splitext(audio_file)
 
-    curl_command = ['curl', '-F', 'audio=@' + os.path.join(CONVERTED_AUDIO_DIR, audio_file), '-F', 'transcript=@' + CONVERTED_TRANSCRIPT_DIR + filename + '.txt', 'http://localhost:' + DOCKER_PORT + '/transcriptions?async=false', '-v', '>', FORCE_ALIGNMENT_JSON_DIR + filename + '.json']
+    curl_command = ['curl', '-F', 'audio=@' + os.path.join(CONVERTED_AUDIO_DIR, audio_file), '-F', 'transcript=@' + os.path.join(CONVERTED_TRANSCRIPT_DIR, filename + '.txt'), 'http://localhost:' + DOCKER_PORT + '/transcriptions?async=false', '-v', '>', os.path.join(FORCE_ALIGNMENT_JSON_DIR, filename + '.json')]
 
     subprocess.call(curl_command)
