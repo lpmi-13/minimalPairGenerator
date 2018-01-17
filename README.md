@@ -49,6 +49,14 @@ below this line is where the pipeline is decoupled from the data source. This is
 
 `clean_and_convert_transcripts.py`
 
+***
+THESE FIRST THREE STEPS ARE EXPECTING TO FIND
+original_audio/
+original_transcripts/
+AS DIRECTORIES.
+
+...I will eventually refactor stuff to make it accept command linearguments for whatever input folder you want, but just focused on getting it all working at the moment
+***
 
 4. generate list of minimal pairs per transcript
 (this step is where meta-data about which phonemes differ can be generated...and then used as folder names. In each of these folders, the eventual minimal pair audio files will be labelled with the video name, so that they remain distinct even with multiple minimal pair audio files in a folder)
