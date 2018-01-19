@@ -82,25 +82,12 @@ for filename in json_files:
                             './converted_audio/' + short_name + '.mp3',
                             '-t',
                             duration,
-                            sub_subdir + '/' + short_name + '_' + word + '.mp3'
-                        ]
-                        created_flag = True
-
-                        subprocess.call(command)
-                        
-                        '''
-                        commenting this out for now, since it may need to be pulled out into its own file
-                        
-
-                        slow_down_command = [
-                            'ffmpeg',
-                            '-i',
-                            sub_subdir + '/' + short_name + '_' + word + '.mp3',
+                            # the next three lines slow down by 50%
                             '-filter:a',
                             'atempo=.50',
                             '-vn',
                             sub_subdir + '/' + short_name + '_' + word + '.mp3'
                         ]
+                        created_flag = True
 
-                        subprocess.call(slow_down_command)
-                        '''
+                        subprocess.call(command)

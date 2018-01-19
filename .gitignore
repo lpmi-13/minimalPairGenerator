@@ -1,5 +1,3 @@
 *.pyc
-data
+*/
 *.json
-converted_*
-original_*
