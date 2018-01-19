@@ -1,7 +1,6 @@
 import subprocess
 import os
 import json
-import urllib.parse
 
 DATA_DIR = './data/'
 FORCE_ALIGNED_DIRECTORY = './force_aligned_json/'
@@ -55,16 +54,19 @@ for filename in json_files:
 
                 for aligned_word in fa_words:
 
+                    '''
+                    this is where we eventually want to filter
+                    based on the length of the audio for the
+                    word. Initial rough testing suggests a length
+                    of below 0.4 seconds is probably too short
+                    to be intelligible, even for vowels
+                    '''
                     if (aligned_word['word'] == pair_word
                     and aligned_word['case'] == 'success'
                     and created_flag is False):
 
-                        '''
-                        we probably need to filter out files
-                        below a certain minimal length (.40 seconds?)
-                        '''
 
-                        f_path = subdir + item + aligned_word['aligned_word']
+                        f_path = subdir + item + aligned_word['word']
                         print('creating file for {}'.format(f_path))
                         start_time = str(aligned_word['start'])
                         end_time = str(aligned_word['end'])
@@ -87,9 +89,8 @@ for filename in json_files:
                         subprocess.call(command)
                         
                         '''
-                        I completely made up this lower part
-                        and have no idea whether it works
-                        '''
+                        commenting this out for now, since it may need to be pulled out into its own file
+                        
 
                         slow_down_command = [
                             'ffmpeg',
@@ -98,7 +99,8 @@ for filename in json_files:
                             '-filter:a',
                             'atempo=.50',
                             '-vn',
-                            sub_subdir  '/' + short_name + '_' + word + '.mp3'
+                            sub_subdir + '/' + short_name + '_' + word + '.mp3'
                         ]
 
                         subprocess.call(slow_down_command)
+                        '''
