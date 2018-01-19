@@ -22,6 +22,7 @@ examples:
 
 ...for a bit less of an overview, [this paper](https://journals.equinoxpub.com/index.php/CALICO/article/viewFile/22985/18991) outlines why practicing minimal pairs can be beneficial in the context of second language acquisition, and specifically describes a method involving learners listening to minimal pairs spoken by multiple different speakers.
 
+The above paper also suggests an interest method of doubling the vowel length, and I still need to investigate how feasible this would be using only ffmpeg before I add another dependency (PRAAT)
 
 ## why automate it?
 
@@ -102,7 +103,7 @@ AS DIRECTORIES.
 `create_fa_container.sh`
 
 
-6. get force-aligned json file
+6. get force-aligned json file specifying the time-stamp for each word in the audio
 (this is the step that takes the most time)
 
 `force-align.py`
@@ -114,7 +115,7 @@ AS DIRECTORIES.
 `create_audio_files.py`
 
 
-8. generate json file reflecting directory structure as well as audio sprites
+8. generate json file reflecting directory structure and vowel/consontant distinctions, as well as actually creating the audio sprites
 (this is what will be sent to the front end to describe the location of each of the compiled audio files)
 
 `generate_assets.py`
