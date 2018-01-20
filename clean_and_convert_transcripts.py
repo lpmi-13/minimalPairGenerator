@@ -5,6 +5,9 @@ from stoplist import bad_words
 ORIGINAL_TRANSCRIPT_DIR = './original_transcripts/'
 CONVERTED_TRANSCRIPT_DIR = './converted_transcripts/'
 
+if not os.path.exists(CONVERTED_TRANSCRIPT_DIR):
+    os.mkdir(CONVERTED_TRANSCRIPT_DIR)
+
 for transcript in os.listdir(ORIGINAL_TRANSCRIPT_DIR):
 
     '''
@@ -22,7 +25,7 @@ for transcript in os.listdir(ORIGINAL_TRANSCRIPT_DIR):
 
     subprocess.call(sed_command_remove_title)
 
-
+    # converting transcripts to one word per line
     with open(os.path.join(ORIGINAL_TRANSCRIPT_DIR,transcript), 'r') as f:
         text = f.readlines()
 
