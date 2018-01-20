@@ -80,7 +80,19 @@ for filename in converted_transcript_files:
             # use this to generate folder names
             ordered_pair = wordPair[0] + '-' + wordPair[1]
 
-            #this maps each word pair to a phoneme diff pair
+            '''
+            this maps the actual phoneme pair to the pair of
+            words, though at some point, we may want to either
+            lock down which pairs are legal to generate or 
+            just filter all the phoneme pairs that aren't either
+            vowel-vowel or consonant-consonant.
+            eg, we're seeing stuff like 'e-k', which is bizarre
+            and shouldn't be happening.
+            I blame the hamming.distance function and will have
+            to create some better testing around it, or just
+            hack the source code
+            '''
+ 
             minimalPairDict[ordered_pair] = encoding_pair
 
     # we invert the dict to get a json representation of the eventual directory structure
