@@ -4,7 +4,7 @@ ORIGINAL_AUDIO_DIR = './original_audio'
 ORIGINAL_TRANSCRIPT_DIR = './original_transcripts'
 
 def clean_filename(title):
-    rep = {"/": "-", ":": "-", "\\": "-", "<": "-", ">": "-", "|": "-", "?": "", "*": "", "\"": "", " ": "_", "'": "", "!": ""}
+    rep = {"/": "-", ":": "-", "\\": "-", "<": "-", ">": "-", "|": "-", "?": "", "*": "", "\"": "", " ": "_", "'": "", "!": "", ",": ""}
 
     rep = dict((re.escape(k), v) for k, v in rep.items())
     pattern = re.compile("|".join(rep.keys()))
