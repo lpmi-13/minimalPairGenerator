@@ -21,14 +21,23 @@ LOCAL_DOCKER_PORT="$(docker port $(docker ps -aq) | tail -c 6)"
 
 echo "local docker port: $LOCAL_DOCKER_PORT"
 
-#echo "starting force alignment process..."
+echo "starting force alignment process..."
 /usr/bin/python3 force-align.py "$LOCAL_DOCKER_PORT"
 
 echo "using force alignment data to create minimal pair audio files..."
 /usr/bin/python3 create_audio_files.py
 
+#comment out if not using node via nvm
+source ~/.nvm/nvm.sh
+nvm use node
+
 echo "generating json metadata of directory structure..."
 /usr/bin/python3 generate_assets.py
+
+echo "shutting down docker container"
+docker stop "$(docker ps -aq)"
+
+docker rm "$(docker ps -aq)"
 
 echo "\n\n\nall done!"
 echo "\n\n\ncompiled audio files in /data"
