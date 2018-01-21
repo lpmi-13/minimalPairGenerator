@@ -1,12 +1,14 @@
 
 # minimalPairGenerator
-this takes in an audio transcript and the audio and outputs audio files of the minimal pairs
+This takes in an audio transcript and the audio and outputs audio files of the minimal pairs in m4a format
+
+It is currently working with audio and transcripts from youtube videos
 
 ## background - what are minimal pairs?
 
 TL;DR - two words with only one meaningful sound difference (these differences can vary between different languages). This becomes very obvious once the usual written form of a language is converted into [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet), which has the benefit of representing one unique sound with one unique symbol. So for language learners from a background of fewer vowel phonemes than English (eg, Spanish), some vowels sound the same to them, and are very difficult to distinguish in conversation.
 
-examples:
+examples of minimal pairs (the weird characters are the IPA):
 
 - peach / pitch
 
@@ -22,13 +24,13 @@ examples:
 
 ...for a bit less of an overview, [this paper](https://journals.equinoxpub.com/index.php/CALICO/article/viewFile/22985/18991) outlines why practicing minimal pairs can be beneficial in the context of second language acquisition, and specifically describes a method involving learners listening to minimal pairs spoken by multiple different speakers.
 
-The above paper also suggests an interest method of doubling the vowel length, and I still need to investigate how feasible this would be using only ffmpeg before I add another dependency (PRAAT)
+The above paper also suggests an interesting method of doubling the vowel length, and I still need to investigate how feasible this would be using only ffmpeg before I add another dependency (PRAAT)
 
 ## why automate it?
 
-The only current applications (that I'm aware of) rely on actual humans to record themselves saying these minimal pairs and submitting them to the system. This has obvious disadvantages in terms of scalability, since even the kind souls dedicated enough to submit their own voice recordings probably don't have a very large amount of time to devote to the task.
+The only current minimal pairs training applications (that I'm aware of) rely on actual humans to record themselves saying these minimal pairs and submitting them to the system. This has obvious disadvantages in terms of scalability, since even the kind souls dedicated enough to submit their own voice recordings probably don't have a very large amount of time to devote to the task.
 
-Fortunately, automatic speech recognition (while still not great) is good enough for us to use in force alignment, which outputs the time-stamp location of every word in an audio stream (It can actually output time stamps for every phoneme, but we don't need that level of detail here).
+Fortunately, automatic speech recognition (while still not great) is good enough for us to use in force alignment, which outputs the time-stamp location of every word in an audio stream (It can actually output time stamps for every phoneme, but we don't need that level of detail here). We send it the transcript of the audio, and the audio itself, and we get back the time of each word in the audio.
 
 Based on the list of minimal pairs present in the video (which we calculate from the transcript), we can then use the force alignment time-stamps to pull out just the audio that has each half of each minimal pair and save those to separate audio files.
 
@@ -128,6 +130,6 @@ beyond python, the current pipeline relies on three external programs:
 
 -ffmpeg (add installation instructions)
 
--waudsprite (add installation instructions with preference for nvm)
+-waudsprite --- this technically just uses nodejs to manipulate ffmpeg, so hoping to eventually rewrite this processing step in pure python to remove the depenedency (add installation instructions with preference for nvm)
 
 -docker (add installation instructions)

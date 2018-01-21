@@ -4,6 +4,14 @@ ORIGINAL_AUDIO_DIR = './original_audio'
 ORIGINAL_TRANSCRIPT_DIR = './original_transcripts'
 
 def clean_filename(title):
+
+    '''
+    TODO - this is currently a list of all the characters 
+    that we want to replace, but it should be a list of 
+    characters that we don't want to replace, which would 
+    be more robust (ie, just replace all spaces with underscores
+    , and everything else thats not a lowercase letter with nothing
+    '''
     rep = {"/": "-", ":": "-", "\\": "-", "<": "-", ">": "-", "|": "-", "?": "", "*": "", "\"": "", " ": "_", "'": "", "!": "", ",": ""}
 
     rep = dict((re.escape(k), v) for k, v in rep.items())
