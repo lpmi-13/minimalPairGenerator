@@ -23,4 +23,4 @@ for audio_file in os.listdir(CONVERTED_AUDIO_DIR):
 
     progress_count += 1
     
-    print('current progress is {}/{} files'.format(progress_count, number_of_files)
+    print('current progress is {}/{} files'.format(progress_count, number_of_files))
