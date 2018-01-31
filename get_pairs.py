@@ -28,13 +28,28 @@ def dict_invert(d):
         keys.append(k)
     return inv
 
-def get_diff(first, second):
-    if len(first) == len(second):
-        return distance.hamming(first, second)
+def is_minimal_pair(first, second):
+    return len(first) == len(second) and distance.hamming(first, second) == 1
 
 def get_different_phoneme(word1, word2):
     difference_index = [i for i in range(len(word1)) if word1[i] != word2[i]]
     return difference_index[0]
+
+
+def get_phoneme_pair(firstIPA, secondIPA):
+    """
+    this gets the actual two phonemes that differ and
+    returns the character index in the IPA representations
+    where this occurs
+    """
+    char_index = get_different_phoneme(firstIPA, secondIPA)
+    encoding_pair = firstIPA[char_index] + '-' + secondIPA[char_index]
+    return encoding_pair
+
+
+def generate_folder_name(word_pair):
+    return word_pair[0] + '-' + word_pair[1]
+
 
 for filename in converted_transcript_files:
 
@@ -68,17 +83,10 @@ for filename in converted_transcript_files:
 
         firstIPA, secondIPA = wordPhoneDict[wordPair[0]], wordPhoneDict[wordPair[1]]
 
-        if get_diff(firstIPA, secondIPA) == 1:
+        if is_minimal_pair(firstIPA, secondIPA):
 
-            '''
-            this gets the actual two phonemes that differ and
-            returns the character index in the IPA representations
-            where this occurs
-            '''
-            char_index = get_different_phoneme(firstIPA, secondIPA)
-            encoding_pair = firstIPA[char_index] + '-' + secondIPA[char_index]
-            # use this to generate folder names
-            ordered_pair = wordPair[0] + '-' + wordPair[1]
+            phoneme_pair = get_phoneme_pair(firstIPA, secondIPA)
+            ordered_pair = generate_folder_name(wordPair)
 
             '''
             this maps the actual phoneme pair to the pair of
@@ -93,7 +101,7 @@ for filename in converted_transcript_files:
             hack the source code
             '''
  
-            minimalPairDict[ordered_pair] = encoding_pair
+            minimalPairDict[ordered_pair] = phoneme_pair
 
     # we invert the dict to get a json representation of the eventual directory structure
     json_data = dict_invert(minimalPairDict)
