@@ -2,8 +2,8 @@ import os
 import subprocess
 from stoplist import bad_words
 
-ORIGINAL_TRANSCRIPT_DIR = './original_transcripts/'
-CONVERTED_TRANSCRIPT_DIR = './converted_transcripts/'
+ORIGINAL_TRANSCRIPT_DIR = './original_transcripts'
+CONVERTED_TRANSCRIPT_DIR = './converted_transcripts'
 
 if not os.path.exists(CONVERTED_TRANSCRIPT_DIR):
     os.mkdir(CONVERTED_TRANSCRIPT_DIR)

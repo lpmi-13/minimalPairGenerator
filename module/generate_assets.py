@@ -10,17 +10,7 @@ directory_json = {}
 for subdir in os.listdir(DATA_DIR):
     directory_path = DATA_DIR + subdir
 
-    # splits phonemes into vowels and consonants
-    firstPhoneme, secondPhoneme = subdir.split('-')
-    if (firstPhoneme in VOWEL_PHONEMES and secondPhoneme in VOWEL_PHONEMES):
-
-        vowel = True
-
-    else:
-
-        vowel = False
-
-    json_item = {'vowel' : vowel, 'words' : []}
+    json_item = {'words' : []}
 
     pair_directories = os.listdir(directory_path)
 
@@ -31,9 +21,12 @@ for subdir in os.listdir(DATA_DIR):
 
         # generate the compiled audio assets
         sounds_dir = DATA_DIR + subdir + '/' + sub_subdir + '/'
+        print('sounds dir is: {}'.format(sounds_dir))
         m4a_file_name = sounds_dir + sub_subdir
+        print('m4a file name is: {}'.format(m4a_file_name))
 
-        command = ['waudsprite', '--loop', 'loop', '--autoplay', 'loop', '-o', m4a_file_name, '-e', 'm4a', sounds_dir + '/*.mp3']
+        command = ['waudsprite', '--loop', 'loop', '--autoplay', 'loop', '-o', m4a_file_name, '-e', 'm4a', sounds_dir + '*.mp3']
+        print('attempting {}'.format(command))
 
         subprocess.call(command)
 
