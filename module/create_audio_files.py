@@ -55,11 +55,10 @@ for filename in json_files:
 
                     #print('checking aligned_word {}'.format(aligned_word))
                     '''
-                    this is where we eventually want to filter
-                    based on the length of the audio for the
-                    word. Initial rough testing suggests a length
-                    of below 0.4 seconds is probably too short
-                    to be intelligible, even for vowels
+                    we still need to check that both of the words
+                    forming the minimal pair have sound clips
+                    over 0.5 seconds. This is currently only
+                    checking one of them.
                     '''
                     if (aligned_word['word'] == pair_word
                     and aligned_word['case'] == 'success'
