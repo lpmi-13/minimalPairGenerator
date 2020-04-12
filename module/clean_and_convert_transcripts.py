@@ -16,12 +16,12 @@ for transcript in os.listdir(ORIGINAL_TRANSCRIPT_DIR):
     '''
 
     # this removes everything between parentheses in the transcript
-    sed_command_remove_parentheses = ['sed', '-i', 's/[(.+)]//g', ORIGINAL_TRANSCRIPT_DIR + transcript]
+    sed_command_remove_parentheses = ['sed', '-i', 's/[(.+)]//g', os.path.join(ORIGINAL_TRANSCRIPT_DIR, transcript)]
 
     subprocess.call(sed_command_remove_parentheses)
 
     # this removes the title at the top of the transcript
-    sed_command_remove_title = ['sed', '-i', '/Title:/d', ORIGINAL_TRANSCRIPT_DIR + transcript]
+    sed_command_remove_title = ['sed', '-i', '/Title:/d', os.path.join(ORIGINAL_TRANSCRIPT_DIR, transcript)]
 
     subprocess.call(sed_command_remove_title)
 
@@ -31,7 +31,8 @@ for transcript in os.listdir(ORIGINAL_TRANSCRIPT_DIR):
 
     with open(os.path.join(CONVERTED_TRANSCRIPT_DIR,transcript), 'w') as output:
         for line in text:
-            wordArray = line.split(' ')
-            for word in wordArray:
-                if (word not in bad_words):
-                    output.write(word + '\n')
+            if line.strip() and ':' not in line:
+                wordArray = line.split(' ')
+                for word in wordArray:
+                    if (word not in bad_words):
+                        output.write(word + '\n')

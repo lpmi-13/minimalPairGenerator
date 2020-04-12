@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run -P 'lowerquality/gentle'
+docker run -p 8765:8765 lowerquality/gentle
